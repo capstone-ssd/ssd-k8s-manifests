@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ssd-dev
+  labels:
+    app.kubernetes.io/part-of: ssd-msa
+    environment: dev

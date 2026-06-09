@@ -1,0 +1,15 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: ssd-auth-service-secret
+  namespace: ssd-dev
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: aws-secretsmanager
+  target:
+    name: ssd-auth-service-secret
+  dataFrom:
+    - extract:
+        key: ssd/dev/auth

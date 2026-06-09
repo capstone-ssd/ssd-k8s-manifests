@@ -1,0 +1,54 @@
+name: deploy-dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: "배포할 서비스 이름"
+        required: true
+        type: choice
+        options:
+          - api-gateway
+          - auth-service
+          - member-service
+          - document-service
+          - review-service
+          - ai-orchestrator
+      image_tag:
+        description: "배포할 이미지 태그"
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: AWS 자격증명 설정
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: kubectl 설정
+        run: aws eks update-kubeconfig --name ssd-dev-eks --region ap-northeast-2
+
+      - name: Helm 설치
+        uses: azure/setup-helm@v4
+
+      - name: 네임스페이스 보장
+        run: kubectl apply -f namespaces/dev.yaml
+
+      - name: External Secret 반영
+        run: kubectl apply -f externalsecrets/${{ github.event.inputs.service }}.yaml
+
+      - name: Helm 배포
+        run: |
+          helm upgrade --install ssd-${{ github.event.inputs.service }} ./charts/ssd-service \
+            --namespace ssd-dev \
+            -f environments/dev/services/${{ github.event.inputs.service }}.yaml \
+            --set image.tag=${{ github.event.inputs.image_tag }}
