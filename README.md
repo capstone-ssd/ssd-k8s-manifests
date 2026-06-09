@@ -20,3 +20,12 @@ SSD MSA 서비스의 Kubernetes 배포 자산을 관리하는 저장소다.
 1. 서비스 저장소가 GitHub Actions로 이미지를 ECR에 푸시한다.
 2. 이 저장소의 values 파일에서 이미지 태그를 갱신한다.
 3. Helm upgrade 명령으로 EKS에 반영한다.
+
+## 추가 자산
+
+- `namespaces/dev.yaml`
+  dev namespace 정의
+- `externalsecrets/`
+  서비스별 Secrets Manager 연동 예시
+- `.github/workflows/deploy-dev.yml`
+  workflow_dispatch 기반 수동 Helm 배포 예시
