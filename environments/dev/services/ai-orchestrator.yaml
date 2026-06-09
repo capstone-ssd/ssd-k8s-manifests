@@ -1,0 +1,5 @@
+fullnameOverride: ssd-ai-orchestrator
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-ai-orchestrator
+  tag: latest
+secretName: ssd-ai-orchestrator-secret

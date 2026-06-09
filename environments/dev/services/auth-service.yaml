@@ -1,0 +1,5 @@
+fullnameOverride: ssd-auth-service
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-auth-service
+  tag: latest
+secretName: ssd-auth-service-secret

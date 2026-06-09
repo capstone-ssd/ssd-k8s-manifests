@@ -1,0 +1,5 @@
+fullnameOverride: ssd-document-service
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-document-service
+  tag: latest
+secretName: ssd-document-service-secret

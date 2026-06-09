@@ -1,0 +1,18 @@
+fullnameOverride: ssd-api-gateway
+
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-api-gateway
+  tag: latest
+
+secretName: ssd-api-gateway-secret
+
+ingress:
+  enabled: true
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  hosts:
+    - host: ""
+      paths:
+        - path: /
+          pathType: Prefix

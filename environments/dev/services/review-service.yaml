@@ -1,0 +1,5 @@
+fullnameOverride: ssd-review-service
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-review-service
+  tag: latest
+secretName: ssd-review-service-secret

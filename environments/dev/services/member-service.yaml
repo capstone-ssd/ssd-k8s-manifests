@@ -1,0 +1,5 @@
+fullnameOverride: ssd-member-service
+image:
+  repository: 436630934123.dkr.ecr.ap-northeast-2.amazonaws.com/ssd-member-service
+  tag: latest
+secretName: ssd-member-service-secret

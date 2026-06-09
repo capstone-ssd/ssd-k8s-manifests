@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ssd-service
+description: SSD MSA 공통 서비스 배포 차트
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
