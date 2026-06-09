@@ -6,8 +6,12 @@ image:
 
 secretName: ssd-api-gateway-secret
 
+service:
+  type: LoadBalancer
+  port: 80
+
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip

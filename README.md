@@ -21,6 +21,13 @@ SSD MSA 서비스의 Kubernetes 배포 자산을 관리하는 저장소다.
 2. 이 저장소의 values 파일에서 이미지 태그를 갱신한다.
 3. Helm upgrade 명령으로 EKS에 반영한다.
 
+## 현재 dev 검증 기준
+
+- `ssd-api-gateway`는 현재 `Service type=LoadBalancer`로 외부 노출한다.
+- 외부 접근 포트는 `80`, 컨테이너 포트는 `8080`이다.
+- 내부 서비스(`auth`, `member`, `document`, `review`, `ai`)는 `ClusterIP`로만 노출한다.
+- ALB Ingress Controller와 External Secrets Operator는 후속 단계에서 붙일 수 있도록 값과 예시 매니페스트를 남겨두었다.
+
 ## 추가 자산
 
 - `namespaces/dev.yaml`
